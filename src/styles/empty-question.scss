@@ -1,0 +1,27 @@
+.empty-question {
+   display: flex;
+   flex-direction: column;
+   align-self: center;
+   margin: 0 auto;
+   gap: 16px;
+   max-width: 284px;
+
+   > img {
+      max-width: 153px;
+      align-self: center;
+   }
+
+   > strong {
+      color: #29292E;
+      font-size: 18px;
+      align-self: center;
+   }
+
+   > span {
+      color: #737380;
+      font-size: 14px;
+      line-height: 21px;
+      align-self: center;
+      text-align: center;
+   }
+}
