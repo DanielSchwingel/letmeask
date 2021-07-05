@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Button } from '../components/Button';
@@ -6,7 +6,6 @@ import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { useRoom } from '../hooks/useRoom';
 import { useModal } from '../hooks/useModal';
-import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
 import { EmptyQuestion } from '../components/EmptyQuestion';
 import { Modal } from '../components/Modal';
@@ -23,22 +22,12 @@ type RoomParams = {
 
 export function AdminRoom() {
    const [ questionId, setQuestionId ] = useState('');
-   const { user } = useAuth();
    const params = useParams<RoomParams>();  
    
    const roomId = params.id;
 
-   const { title, questions, author } = useRoom(roomId);
+   const { title, questions } = useRoom(roomId);
    const { showModalDelete, toggleModalDelete, showModalClose, toggleModalClose } = useModal();
-
-
-   useEffect(()=>{
-      if (user?.id !== author) {
-         alert('não é o dono da sala')
-         return
-      }
-   },[user, author])
-
 
    async function handleEndRoom(){
       toggleModalClose();
