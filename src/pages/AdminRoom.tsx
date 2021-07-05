@@ -1,12 +1,15 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { useRoom } from '../hooks/useRoom';
+import { useModal } from '../hooks/useModal';
+import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
 import { EmptyQuestion } from '../components/EmptyQuestion';
+import { Modal } from '../components/Modal';
 
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
@@ -19,22 +22,31 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
+   const [ questionId, setQuestionId ] = useState('');
+   const { user } = useAuth();
    const params = useParams<RoomParams>();  
-   const history = useHistory();
+   
    const roomId = params.id;
-   const { title, questions } = useRoom(roomId);
+
+   const { title, questions, author } = useRoom(roomId);
+   const { showModalDelete, toggleModalDelete, showModalClose, toggleModalClose } = useModal();
+
+
+   useEffect(()=>{
+      if (user?.id !== author) {
+         alert('não é o dono da sala')
+         return
+      }
+   },[user, author])
+
 
    async function handleEndRoom(){
-      await database.ref(`/rooms/${roomId}`).update({
-         closedAt: new Date()
-      })
-      history.push('/');
+      toggleModalClose();
    }
 
    async function handleDeleteQuestion(questionId: string){
-      if (window.confirm('Tem certeza que você deseja encerrar esta sala?')) {
-         await database.ref(`/rooms/${roomId}/questions/${questionId}`).remove()
-      }
+      setQuestionId(questionId);
+      toggleModalDelete();
    }
 
    async function handleHighLightQuestion(questionId: string){
@@ -100,12 +112,27 @@ export function AdminRoom() {
                         >
                            <img src={deleteImg} alt="Remover pergunta"/>
                         </button>
+
                      </Question>
                   )
                })}
             </div>
-            
+
          </main>
+         {showModalDelete && 
+            <Modal
+               roomId={roomId}
+               questionId={questionId}
+               type='DELETE'
+            />
+         }
+         {showModalClose && 
+            <Modal
+               roomId={roomId}
+               questionId={questionId}
+               type='CLOSE'
+            />
+         }
 
       </div>
    )

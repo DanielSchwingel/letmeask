@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { database } from '../services/firebase';
 import { Button } from '../components/Button';
@@ -18,11 +18,12 @@ type RoomParams = {
 }
 
 export function Room() {
-   const { user } = useAuth();
+   const { user, signInWithGoogle, signOutWihtGoogle } = useAuth();
    const [ newQuestion, setNewQuestion ] = useState('');
    const params = useParams<RoomParams>();  
    const roomId = params.id;
    const { title, questions } = useRoom(roomId);
+   const history = useHistory();
 
    async function handleSendQuestion(event: FormEvent) {
       event.preventDefault();
@@ -58,11 +59,15 @@ export function Room() {
       }
    }
 
+   function handleSingOutWithGoogle(){
+      signOutWihtGoogle().then(result => history.push('/'));
+   }
+
    return (
       <div id='page-room'>
          <header>
             <div className='content'>
-               <img src={logoImg} alt='Letmeask'/>
+               <img src={logoImg} alt='Letmeask' onClick={()=> history.push('/')}/>
                <RoomCode code={roomId}/>
             </div>
          </header>
@@ -81,10 +86,10 @@ export function Room() {
                   { user ? (
                      <div className='user-info'>
                         <img src={user.avatar} alt={user.name}/>
-                        <span>{user.name}</span>
+                        <span>{user.name}. <button className='button-link' onClick={handleSingOutWithGoogle}>Sair</button></span>
                      </div>
                   ) : (
-                     <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+                     <span>Para enviar uma pergunta, <button className='button-link' onClick={signInWithGoogle}> faça seu login</button>.</span>
                   )}
                   
                   <Button type='submit' disabled={!user}>Enviar pergunta</Button>
