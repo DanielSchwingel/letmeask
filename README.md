@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+<p align="center">
+  <img alt="Letmeask" src=".github/logo.svg" width="160px">
+</p>
+<br>
+ <p align="center">
+   <img src="https://img.shields.io/github/issues/DanielSchwingel/devquiz?style=for-the-badge"/>
+   <img src="https://img.shields.io/github/forks/DanielSchwingel/devquiz?style=for-the-badge"/>
+   <img src="https://img.shields.io/github/stars/DanielSchwingel/devquiz?style=for-the-badge"/>
+   <img src="https://img.shields.io/github/license/DanielSchwingel/devquiz?style=for-the-badge"/>
+ </p>
+ <br>
+ <h1 align="center">
+    <img alt="Letmeask" src=".github/cover.svg" />
+</h1>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🧪 Tecnologias
 
-## Available Scripts
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-In the project directory, you can run:
+- [React](https://reactjs.org)
+- [Firebase](https://firebase.google.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-### `npm start`
+## 🚀 Como executar
+Clone o projeto e acesse a pasta do mesmo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+$ git clone https://github.com/DanielSchwingel/letmeask.git
+$ cd letmeask
+```
+Para iniciá-lo, siga os passos abaixo:
+```bash
+# Instalar as dependências
+$ npm install
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Iniciar o projeto
+$ npm start
+```
+O app estará disponível no seu browser pelo endereço http://localhost:3000.
+Ou acesse o [link](https://letmeask-fb1a6.web.app/) e veja funcionando 😄
 
-### `npm test`
+## 💻 Projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Letmeask é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
 
-### `npm run build`
+## 🔖 Layout
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Você pode visualizar o layout do projeto através do link abaixo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Layout Web](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Lembrando que você precisa ter uma conta no [Figma](http://figma.com/).
 
-### `npm run eject`
+## 📝 License
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Feito com 💜 by Daniel Filipe Schwingel 👋 [Contate-me](https://www.linkedin.com/in/daniel-filipe-schwingel-a6541515b/)
