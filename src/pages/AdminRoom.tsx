@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -23,11 +23,19 @@ type RoomParams = {
 export function AdminRoom() {
    const [ questionId, setQuestionId ] = useState('');
    const params = useParams<RoomParams>();  
+   const history = useHistory();
    
    const roomId = params.id;
 
-   const { title, questions } = useRoom(roomId);
+   const { title, questions, loading, isAuthor } = useRoom(roomId);
    const { showModalDelete, toggleModalDelete, showModalClose, toggleModalClose } = useModal();
+
+   useEffect(()=> {
+      if (!loading && !isAuthor) {
+         console.log(isAuthor)
+         history.push('/');
+      }
+   },[loading, isAuthor, history])
 
    async function handleEndRoom(){
       toggleModalClose();
