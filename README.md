@@ -1,14 +1,12 @@
 <p align="center">
   <img alt="Letmeask" src=".github/logo.svg" width="160px">
 </p>
-<br>
  <p align="center">
    <img src="https://img.shields.io/github/issues/DanielSchwingel/devquiz?style=for-the-badge"/>
    <img src="https://img.shields.io/github/forks/DanielSchwingel/devquiz?style=for-the-badge"/>
    <img src="https://img.shields.io/github/stars/DanielSchwingel/devquiz?style=for-the-badge"/>
    <img src="https://img.shields.io/github/license/DanielSchwingel/devquiz?style=for-the-badge"/>
  </p>
- <br>
  <h1 align="center">
     <img alt="Letmeask" src=".github/cover.svg" />
 </h1>
